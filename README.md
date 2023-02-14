@@ -1,6 +1,6 @@
 # WebSearch
 
-Terminal Websearch in Rust inspired by OhMyZsh's web-search
+Terminal Websearch written in Rust inspired by OhMyZsh's web-search
 
 ---
 
