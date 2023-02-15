@@ -3,10 +3,10 @@ use std::env;
 use urlencoding;
 use webbrowser;
 
-fn main(){
+fn main() {
     let args: Vec<String> = env::args().collect();
     let engine = &args[1];
-    let query = &args[2];
+    let query = &args[2..].join(" ");
     web_search(&engine, &query).expect("This didnt work");
 }
 
@@ -33,7 +33,9 @@ fn web_search(engine: &str, query: &str) -> Result<(), String> {
     urls.insert("ask", "https://www.ask.com/web?q=");
 
     // Check whether the search engine is supported
-    let url = urls.get(engine).ok_or(format!("Search engine '{}' not supported.", engine))?;
+    let url = urls
+        .get(engine)
+        .ok_or(format!("Search engine '{}' not supported.", engine))?;
 
     // Build search URL
     let search_url = format!("{}{}", url, urlencoding::encode(query));
