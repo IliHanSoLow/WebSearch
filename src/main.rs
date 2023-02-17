@@ -91,9 +91,7 @@ fn web_search(engine: &str, query: &str) -> Result<(), String> {
     for i in x {
         let tmp = i.unwrap().clone();
         if counter % 2 == 0 {
-            let Some(last) = last_i;
-            let Some(tmp) = Some(&tmp);
-            urls.insert(last, tmp);
+            urls.insert(&last_i, &tmp);
         } else {
             last_i = Some(&tmp);
         }
